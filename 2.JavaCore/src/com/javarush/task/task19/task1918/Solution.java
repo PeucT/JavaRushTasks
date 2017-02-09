@@ -19,8 +19,8 @@ public class Solution {
         String fileName = reader.readLine();
         reader.close();
         if (fileName.isEmpty()) System.exit(1);
-        BufferedReader reader1 = new BufferedReader(new FileReader(new File(fileName)));
-      //  BufferedReader reader1 = new BufferedReader(new FileReader(new File("D:\\JavaProjects\\IO\\input.txt")));
+        FileReader reader1 = new FileReader(new File(fileName));
+        // FileReader reader1 = new FileReader(new File("D:\\JavaProjects\\IO\\input.txt"));
         String openTag = "";
         String closeTag = "";
         try
@@ -34,12 +34,20 @@ public class Solution {
         }
 
         String input = "";
-        while (true)
-        {
-            String line = reader1.readLine();
-            if (line == null) break;
-            input += line;
+
+        StringBuilder strBuild = new StringBuilder();
+        while (true) {
+            int c = reader1.read();
+            if (c >= 0) {
+                if (c != 13 && c != 10) {
+                    strBuild.append((char) c);
+                }
+            } else {
+                break;
+            }
         }
+        input = strBuild.toString();
+
 
         reader1.close();
 
