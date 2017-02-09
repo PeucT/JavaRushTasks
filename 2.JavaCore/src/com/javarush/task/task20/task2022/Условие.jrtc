@@ -1,0 +1,14 @@
+<div class="wdghtml" taskKey="com.javarush.task.task20.task2022">
+<h3>Переопределение сериализации в потоке</h3>
+<p>Сериализация/десериализация <span class="text-corporate"><strong>Solution</strong></span> не работает.<br />
+Исправь ошибки не меняя сигнатуры методов и класса.<br />
+Метод <mark>main</mark> не участвует в тестировании.</p>
+<p><strong>Написать код проверки самостоятельно в методе main:</strong><br />
+1) создать экземпляр класса <span class="text-corporate"><strong>Solution</strong></span><br />
+2) записать в него данные &#8212; <mark class="user">writeObject</mark><br />
+3) сериализовать класс <span class="text-corporate"><strong>Solution</strong></span> &#8212; <mark>writeObject(ObjectOutputStream <strong>out</strong>)</mark><br />
+4) десериализовать, получаем новый объект<br />
+5) записать в новый объект данные &#8212; <mark class="user">writeObject</mark><br />
+6) проверить, что в файле есть данные из <strong>п.2</strong> и <strong>п.5</strong></p>
+
+</div>

@@ -1,0 +1,5 @@
+<div class="wdghtml" taskKey="com.javarush.task.task20.task2020">
+<h3>Сериализуйте Person</h3>
+<p>Сериализуй класс <span class="text-corporate"><strong>Person</strong></span> стандартным способом. При необходимости добавь некоторым полям модификатор <strong><span class="text-neon">transient</span></strong>.</p>
+
+</div>

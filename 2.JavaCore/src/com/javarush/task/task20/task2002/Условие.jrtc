@@ -1,0 +1,7 @@
+<div class="wdghtml" taskKey="com.javarush.task.task20.task2002">
+<h3>Читаем и пишем в файл: JavaRush</h3>
+<p>Реализуйте логику записи в файл и чтения из файла для класса <span class="text-corporate"><strong>JavaRush</strong></span>.<br />
+В файле <strong>your_file_name.tmp</strong> может быть несколько объектов <span class="text-corporate"><strong>JavaRush</strong></span>.<br />
+Метод <mark>main</mark> реализован только для вас и не участвует в тестировании.</p>
+
+</div>

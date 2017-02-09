@@ -1,0 +1,6 @@
+<div class="wdghtml" taskKey="com.javarush.task.task20.task2012">
+<h3>OutputToConsole</h3>
+<p>Класс <span class="text-corporate"><strong>OutputToConsole</strong></span> должен сериализовываться с помощью интерфейса <mark class="red">Externalizable</mark>.<br />
+Найди и исправь ошибку.</p>
+
+</div>

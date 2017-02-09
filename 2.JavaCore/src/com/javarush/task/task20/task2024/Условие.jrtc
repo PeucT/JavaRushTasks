@@ -1,0 +1,9 @@
+<div class="wdghtml" taskKey="com.javarush.task.task20.task2024">
+<h3>Знакомство с графами</h3>
+<p>Прочитать в дополнительных материалах о сериализации графов.<br />
+Дан ориентированный плоский граф <span class="text-red"><strong>Solution</strong></span>, содержащий циклы и петли.</p>
+<p><strong>Пример</strong>, <em>http://edu.nstu.ru/courses/saod/images/graph1.gif</em></p>
+<p>Сериализовать <span class="text-corporate"><strong>Solution</strong></span>.<br />
+Все данные должны сохранить порядок следования.</p>
+
+</div>

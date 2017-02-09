@@ -1,0 +1,12 @@
+<div class="wdghtml" taskKey="com.javarush.task.task20.task2026">
+<h3>Алгоритмы-прямоугольники</h3>
+<p>1. Дан двумерный массив <strong><span class="text-red"><mark class="user">N</mark>*<mark class="user">N</mark></span></strong>, который содержит несколько прямоугольников.<br />
+2. Различные прямоугольники не соприкасаются и не накладываются.<br />
+3. Внутри прямоугольник весь заполнен <span class="text-user"><strong>1</strong></span>.<br />
+4. В массиве:<br />
+4.1) <strong>a[i, j]</strong> = <strong><span class="text-user">1</span></strong>, если элемент (<strong>i, j</strong>) принадлежит какому-либо прямоугольнику<br />
+4.2) <strong>a[i, j]</strong> = <span class="text-user"><strong>0</strong></span>, в противном случае<br />
+5. <mark>getRectangleCount</mark> должен возвращать количество прямоугольников.<br />
+6. Метод <mark>main</mark> не участвует в тестировании</p>
+
+</div>

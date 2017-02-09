@@ -1,0 +1,7 @@
+<div class="wdghtml" taskKey="com.javarush.task.task20.task2003">
+<h3>Знакомство с properties</h3>
+<p>В методе <mark>fillInPropertiesMap</mark> считайте имя файла с консоли и заполни карту properties данными из файла.<br />
+Про <strong><span class="text-corporate">.properties</span></strong> почитать тут &#8212; <em>http://ru.wikipedia.org/wiki/.properties</em><br />
+Реализуй логику записи в файл и чтения из файла для карты properties.</p>
+
+</div>

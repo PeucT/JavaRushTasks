@@ -1,0 +1,11 @@
+<div class="wdghtml" taskKey="com.javarush.task.task20.task2027">
+<h3>Кроссворд</h3>
+<p>1. Дан двумерный массив, который содержит буквы английского алфавита в нижнем регистре.<br />
+2. Метод <mark>detectAllWords</mark> должен найти все слова из <strong><span class="text-red">words</span></strong> в массиве <span class="text-red"><strong>crossword</strong></span>.<br />
+3. Элемент(<mark class="user">startX</mark>, <mark class="user">startY</mark>) должен соответствовать первой букве слова, элемент(<mark class="user">endX</mark>, <mark class="user">endY</mark>) &#8212; последней.<br />
+<strong>text</strong> &#8212; это само слово, располагается между начальным и конечным элементами<br />
+4. Все слова есть в массиве.<br />
+5. Слова могут быть расположены горизонтально, вертикально и по диагонали как в нормальном, так и в обратном порядке.<br />
+6. Метод <mark>main</mark> не участвует в тестировании.</p>
+
+</div>

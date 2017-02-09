@@ -1,0 +1,16 @@
+<div class="wdghtml" taskKey="com.javarush.task.task20.task2014">
+<h3>Serializable Solution</h3>
+<p>Сериализуй класс <span class="text-corporate"><strong>Solution</strong></span>.<br />
+Подумай, какие поля не нужно сериализовать, пометь ненужные поля модификатором <span class="text-neon"><strong>transient</strong></span>.<br />
+Объект всегда должен содержать актуальные итоговые данные.<br />
+Метод <mark>main</mark> не участвует в тестировании.</p>
+<p><strong>Написать код проверки самостоятельно в методе main:</strong><br />
+1) создать файл, открыть поток на чтение (<em>input stream</em>) и на запись(<em>output stream</em>);<br />
+2) создать экземпляр класса <span class="text-corporate"><strong>Solution</strong></span> &#8212; <mark class="green"><strong>savedObject</strong></mark>;<br />
+3) записать в поток на запись <mark class="green">savedObject</mark> (<em>убедитесь, что они там действительно есть</em>);<br />
+4) создать другой экземпляр класса <span class="text-corporate"><strong>Solution</strong></span> с другим параметром;<br />
+5) загрузить из потока на чтение объект &#8212; <mark class="green">loadedObject</mark>;<br />
+6) проверить, что <mark class="green">savedObject</mark>.<mark class="user">string</mark> равна <mark class="green">loadedObject</mark>.<mark class="user">string</mark>;<br />
+7) обработать исключения.</p>
+
+</div>

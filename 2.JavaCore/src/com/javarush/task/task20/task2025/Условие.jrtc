@@ -1,0 +1,13 @@
+<div class="wdghtml" taskKey="com.javarush.task.task20.task2025">
+<h3>Алгоритмы-числа</h3>
+<p>Число <mark class="user">S</mark> состоит из <mark class="user">M</mark> цифр, например, <mark class="user">S</mark>=<span class="text-user"><strong>370</strong></span> и <mark class="user">M</mark> (<em>количество цифр</em>) =<span class="text-user"><strong> 3</strong></span><br />
+Реализовать логику метода <mark>getNumbers</mark>, который должен среди натуральных чисел меньше <mark class="user">N</mark> (<span class="text-corporate">long</span>)<br />
+находить все числа, удовлетворяющие следующему критерию:<br />
+число <mark class="user">S</mark> равно сумме его цифр, возведенных в <mark class="user">M</mark> степень<br />
+<mark>getNumbers</mark> должен возвращать все такие числа в порядке возрастания.</p>
+<p><strong>Пример искомого числа:</strong><br />
+<code>370 = 3*3*3 + 7*7*7 + 0*0*0<br />
+8208 = 8*8*8*8 + 2*2*2*2 + 0*0*0*0 + 8*8*8*8</code></p>
+<p>На выполнение дается <span class="text-user"><strong>10</strong></span> секунд и <span class="text-user"><strong>50</strong></span> МБ памяти.</p>
+
+</div>

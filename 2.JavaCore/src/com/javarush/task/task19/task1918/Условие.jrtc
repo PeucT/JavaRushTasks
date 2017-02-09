@@ -1,0 +1,25 @@
+<div class="wdghtml" taskKey="com.javarush.task.task19.task1918">
+<h3>Знакомство с тегами</h3>
+<p>Считайте с консоли имя файла, который имеет HTML-формат.</p>
+<p><strong>Пример:</strong><br />
+<span class="text-neon">Info about Leela &lt;span xml:lang=&#187;en&#187; lang=&#187;en&#187;&gt;&lt;b&gt;&lt;span&gt;Turanga Leela</span><br />
+<span class="text-neon"> &lt;/span&gt;&lt;/b&gt;&lt;/span&gt;&lt;span&gt;Super&lt;/span&gt;&lt;span&gt;girl&lt;/span&gt;</span></p>
+<p>Первым параметром в метод main приходит тег. Например, &#171;<em><strong>span</strong></em>&#171;.<br />
+Вывести на консоль все теги, которые соответствуют заданному тегу.<br />
+Каждый тег на новой строке, порядок должен соответствовать порядку следования в файле.<br />
+Количество пробелов, <mark class="user">n</mark>, <mark class="user">r</mark> не влияют на результат.<br />
+Файл не содержит тег <strong>CDATA</strong>, для всех открывающих тегов имеется отдельный закрывающий тег, одиночных тегов нет.<br />
+Тег может содержать вложенные теги.</p>
+<p><strong>Пример вывода:</strong><br />
+<code>&lt;span xml:lang="en" lang="en"&gt;&lt;b&gt;&lt;span&gt;Turanga Leela&lt;/span&gt;&lt;/b&gt;&lt;/span&gt;<br />
+&lt;span&gt;Turanga Leela&lt;/span&gt;<br />
+&lt;span&gt;Super&lt;/span&gt;<br />
+&lt;span&gt;girl&lt;/span&gt;</code></p>
+<p><strong>Шаблон тега:</strong><br />
+<code>&lt;tag&gt;text1&lt;/tag&gt;<br />
+&lt;tag text2&gt;text1&lt;/tag&gt;<br />
+&lt;tag<br />
+text2&gt;text1&lt;/tag&gt;</code></p>
+<p><strong>text1, text2</strong> могут быть пустыми</p>
+
+</div>

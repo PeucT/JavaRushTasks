@@ -1,0 +1,6 @@
+<div class="wdghtml" taskKey="com.javarush.task.task20.task2021">
+<h3>Запрет сериализации</h3>
+<p>Запрети сериализацию класса <span class="text-corporate"><strong>SubSolution</strong></span> используя <strong><span class="text-user">NotSerializableException</span></strong>.<br />
+Сигнатуры классов менять нельзя.</p>
+
+</div>

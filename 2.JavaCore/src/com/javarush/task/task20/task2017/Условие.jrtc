@@ -1,0 +1,7 @@
+<div class="wdghtml" taskKey="com.javarush.task.task20.task2017">
+<h3>Десериализация</h3>
+<p>На вход подается поток, в который записан сериализованный объект класса <span class="text-corporate"><strong>A</strong></span> либо класса <span class="text-corporate"><strong>B</strong></span>.<br />
+Десериализуй объект в методе <mark>getOriginalObject</mark> так, чтобы в случае возникновения исключения было выведено сообщение на экран и возвращен <span class="text-neon"><strong>null</strong></span>.<br />
+Реализуй интерфейс <mark class="red">Serializable</mark> где необходимо.</p>
+
+</div>

@@ -1,0 +1,5 @@
+<div class="wdghtml" taskKey="com.javarush.task.task20.task2010">
+<h3>Как сериализовать что-то свое?</h3>
+<p>Сделайте так, чтобы сериализация класса <span class="text-corporate"><strong>Object</strong></span> была возможной.</p>
+
+</div>

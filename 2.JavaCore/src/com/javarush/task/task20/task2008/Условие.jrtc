@@ -1,0 +1,7 @@
+<div class="wdghtml" taskKey="com.javarush.task.task20.task2008">
+<h3>Как сериализовать Singleton?</h3>
+<p>Два десериализованных объекта <mark class="green">singleton</mark> и <mark class="green">singleton1</mark> имеют разные ссылки в памяти, а должны иметь одинаковые.<br />
+В класс <span class="text-corporate"><strong>Singleton</strong></span> добавь один метод (<em>погуглите</em>), чтобы после десериализации ссылки на объекты были равны.<br />
+Метод <mark>main</mark> не участвует в тестировании.</p>
+
+</div>

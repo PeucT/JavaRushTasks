@@ -1,0 +1,7 @@
+<div class="wdghtml" taskKey="com.javarush.task.task20.task2013">
+<h3>Externalizable Person</h3>
+<p>Класс <span class="text-corporate"><strong>Person</strong></span> должен сериализовываться с помощью интерфейса <mark class="red">Externalizable</mark>.<br />
+Исправь ошибку сериализации.<br />
+Сигнатуры методов менять нельзя.</p>
+
+</div>

@@ -1,0 +1,7 @@
+<div class="wdghtml" taskKey="com.javarush.task.task20.task2004">
+<h3>Читаем и пишем в файл статики</h3>
+<p>Реализуй логику записи в файл и чтения из файла для класса <span class="text-corporate"><strong>ClassWithStatic</strong></span>.<br />
+Метод <mark>load</mark> должен инициализировать объект включая статические поля данными из файла.<br />
+Метод <mark>main</mark> не участвует в тестировании.</p>
+
+</div>

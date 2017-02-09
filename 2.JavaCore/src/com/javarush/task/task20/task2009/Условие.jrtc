@@ -1,0 +1,5 @@
+<div class="wdghtml" taskKey="com.javarush.task.task20.task2009">
+<h3>Как сериализовать static?</h3>
+<p>Сделай так, чтобы сериализация класса <span class="text-corporate"><strong>ClassWithStatic</strong></span> была возможной.</p>
+
+</div>

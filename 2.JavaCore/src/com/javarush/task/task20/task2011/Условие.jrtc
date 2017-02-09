@@ -1,0 +1,5 @@
+<div class="wdghtml" taskKey="com.javarush.task.task20.task2011">
+<h3>Externalizable для апартаментов</h3>
+<p>Реализуй интерфейс <mark class="red">Externalizable</mark> в классе <span class="text-corporate"><strong>Apartment</strong></span>.</p>
+
+</div>
