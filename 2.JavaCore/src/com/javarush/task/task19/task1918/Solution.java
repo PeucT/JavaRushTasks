@@ -36,7 +36,7 @@ public class Solution {
         String input = "";
 
         StringBuilder strBuild = new StringBuilder();
-        while (true) {
+        while (reader1.ready()) {
             int c = reader1.read();
             if (c >= 0) {
                 strBuild.append((char) c);
