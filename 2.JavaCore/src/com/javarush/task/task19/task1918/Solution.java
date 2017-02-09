@@ -39,14 +39,12 @@ public class Solution {
         while (true) {
             int c = reader1.read();
             if (c >= 0) {
-                if (c != 13 && c != 10) {
-                    strBuild.append((char) c);
-                }
+                strBuild.append((char) c);
             } else {
                 break;
             }
         }
-        input = strBuild.toString();
+        input = strBuild.toString().replaceAll("\r\n" , "");
 
 
         reader1.close();
