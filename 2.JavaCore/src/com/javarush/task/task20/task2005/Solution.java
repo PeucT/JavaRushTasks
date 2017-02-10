@@ -13,7 +13,8 @@ public class Solution {
     public static void main(String[] args) {
         //исправь outputStream/inputStream в соответствии с путем к твоему реальному файлу
         try {
-            File your_file_name = File.createTempFile("your_file_name", null);
+            File your_file_name = new File("D:\\JavaProjects\\IO\\temp.txt");
+            //File your_file_name = File.createTempFile("your_file_name", null);
             OutputStream outputStream = new FileOutputStream(your_file_name);
             InputStream inputStream = new FileInputStream(your_file_name);
 
@@ -25,6 +26,8 @@ public class Solution {
             somePerson.load(inputStream);
             //check here that ivanov equals to somePerson - проверьте тут, что ivanov и somePerson равны
             System.out.println(ivanov.equals(somePerson));
+/*            System.out.println(ivanov.hashCode());
+            System.out.println(somePerson.hashCode());*/
             inputStream.close();
 
         } catch (IOException e) {
@@ -47,7 +50,8 @@ public class Solution {
 
             Human human = (Human) o;
 
-            if (name == null ? !name.equals(human.name) : human.name != null) return false;
+            // Ошибка была тут
+            if (name != null ? !name.equals(human.name) : human.name != null) return false;
             return assets != null ? assets.equals(human.assets) : human.assets == null;
 
         }
@@ -56,7 +60,8 @@ public class Solution {
         public int hashCode() {
             int result = name != null ? name.hashCode() : 0;
             result = 31 * result + (assets != null ? assets.hashCode() : 0);
-            return (int) (Math.random() * 100);
+            return result;
+            /*return (int) (Math.random() * 100);*/
         }
 
         public Human() {
