@@ -13,7 +13,8 @@ public class Solution {
         //исправьте outputStream/inputStream в соответствии с путем к вашему реальному файлу
         try {
 
-            File your_file_name = File.createTempFile("your_file_name", null);
+            //File your_file_name = File.createTempFile("D:\\JavaProjects\\IO\\temp.txt", null);
+            File your_file_name = new File("D:\\JavaProjects\\IO\\temp.txt");
             OutputStream outputStream = new FileOutputStream(your_file_name);
             InputStream inputStream = new FileInputStream(your_file_name);
 
@@ -24,6 +25,11 @@ public class Solution {
             Human somePerson = new Human();
             somePerson.load(inputStream);
             //check here that ivanov equals to somePerson - проверьте тут, что ivanov и somePerson равны
+            if (somePerson.equals(ivanov)) {
+                System.out.println("Everything is ok");
+            } else {
+                System.out.println("Objects are not identical");
+            }
             inputStream.close();
 
         } catch (IOException e) {
@@ -70,11 +76,54 @@ public class Solution {
         }
 
         public void save(OutputStream outputStream) throws Exception {
-            //implement this method - реализуйте этот метод
+            OutputStreamWriter writer = new OutputStreamWriter(outputStream);
+            if (name != null) {
+                writer.write("yes");
+                writer.write("\r\n");
+                writer.write(name);
+                writer.write("\r\n");
+            } else {
+                writer.write("no");
+                writer.write("\r\n");
+            }
+
+            if (assets.size() != 0)
+            {
+                writer.write("yes");
+            }
+
+            else {
+                writer.write("no");
+            }
+
+            for (Asset entry: assets)
+            {
+                writer.write("\r\n");
+                writer.write(entry.getName());
+                writer.write("\r\n");
+                writer.write(String.valueOf(entry.getPrice()));
+            }
+            writer.flush();
         }
 
         public void load(InputStream inputStream) throws Exception {
-            //implement this method - реализуйте этот метод
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            if ("yes".equals(reader.readLine())) this.name = reader.readLine();
+            else this.name = null;
+            if ("yes".equals(reader.readLine()))
+            {
+                while (true)
+                {
+                    String name = reader.readLine();
+
+                    if (name == null) break;
+                    Double price = Double.parseDouble(reader.readLine());
+                    Asset asset = new Asset(name);
+                    asset.setPrice(price);
+                    this.assets.add(asset);
+                }
+            }
+
         }
     }
 }
