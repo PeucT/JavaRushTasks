@@ -10,8 +10,8 @@ public class Solution {
         //you can find your_file_name.tmp in your TMP directory or fix outputStream/inputStream according to your real file location
         //вы можете найти your_file_name.tmp в папке TMP или исправьте outputStream/inputStream в соответствии с путем к вашему реальному файлу
         try {
-
-            File your_file_name = File.createTempFile("your_file_name", null);
+            File your_file_name = new File("D:\\JavaProjects\\IO\\temp.txt");
+            //File your_file_name = File.createTempFile("your_file_name", null);
             OutputStream outputStream = new FileOutputStream(your_file_name);
             InputStream inputStream = new FileInputStream(your_file_name);
 
@@ -27,6 +27,7 @@ public class Solution {
             loadedObject.j = 7;
 
             loadedObject.load(inputStream);
+            System.out.println(classWithStatic.equals(loadedObject));
             //check here that classWithStatic object equals to loadedObject object - проверьте тут, что classWithStatic и loadedObject равны
 
             outputStream.close();
@@ -47,11 +48,24 @@ public class Solution {
         public int j;
 
         public void save(OutputStream outputStream) throws Exception {
-            //implement this method - реализуйте этот метод
+            OutputStreamWriter writer = new OutputStreamWriter(outputStream);
+            writer.write(ClassWithStatic.staticString);
+            writer.write("\r\n");
+            writer.write(String.valueOf(this.i));
+            writer.write("\r\n");
+            writer.write(String.valueOf(this.j));
+            writer.close();
         }
 
         public void load(InputStream inputStream) throws Exception {
-            //implement this method - реализуйте этот метод
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            while (true) {
+                String line = reader.readLine();
+                if (line == null) break;
+                ClassWithStatic.staticString = line;
+                this.i = Integer.parseInt(reader.readLine());
+                this.j = Integer.parseInt(reader.readLine());
+            }
         }
 
         @Override
