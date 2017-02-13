@@ -1,10 +1,12 @@
 package com.javarush.task.task20.task2016;
 
-/* 
+import java.io.Serializable;
+
+/*
 Минимум изменений
 */
 public class Solution {
-    public class A {
+    public class A implements Serializable{
         String name = "A";
 
         public A(String name) {

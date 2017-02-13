@@ -1,16 +1,20 @@
 package com.javarush.task.task20.task2018;
 
-import java.io.Serializable;
+import java.io.*;
 
 /* 
 Найти ошибки
 */
-public class Solution {
-  /*  public static class A {
+public class Solution{
+    public static class A {
         protected String name = "A";
 
         public A(String name) {
             this.name += name;
+        }
+
+        public A(){
+            super();
         }
     }
 
@@ -19,6 +23,21 @@ public class Solution {
             super(name);
             this.name += name;
         }
+
+        public B(){
+            super();
+        }
+
+        public void writeObject(ObjectOutputStream outputStream) throws IOException {
+            outputStream.defaultWriteObject();
+            outputStream.writeObject(name);
+        }
+
+        public void readObject(ObjectInputStream inputStream) throws IOException, ClassNotFoundException {
+            inputStream.defaultReadObject();
+            this.name = (String) inputStream.readObject();
+        }
+
     }
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
@@ -36,5 +55,5 @@ public class Solution {
 
         B b1 = (B)ois.readObject();
         System.out.println(b1.name);
-    }*/
+    }
 }
