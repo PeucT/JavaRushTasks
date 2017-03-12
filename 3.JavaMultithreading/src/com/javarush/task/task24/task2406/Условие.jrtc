@@ -1,0 +1,8 @@
+taskKey="com.javarush.task.task24.task2406"
+
+Наследование от внутреннего класса
+
+Внутри класса Solution создай 2 внутренних public класса Apt3Bedroom, BigHall.
+Унаследуй их от Apartments и Hall.
+
+
