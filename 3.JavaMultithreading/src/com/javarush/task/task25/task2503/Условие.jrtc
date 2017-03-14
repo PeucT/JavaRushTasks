@@ -1,0 +1,11 @@
+taskKey="com.javarush.task.task25.task2503"
+
+Свой enum
+
+Реализуй интерфейс Columnable у Column, описание методов смотрите в джавадоках.
+Реализуй логику метода Column.getVisibleColumns.
+Метод Column.configureColumns уже реализован, его не меняй.
+Создавать дополнительные поля нельзя.
+Метод main не участвует в тестировании.
+
+
