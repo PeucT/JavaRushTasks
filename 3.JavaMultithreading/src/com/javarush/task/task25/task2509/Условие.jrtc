@@ -1,0 +1,9 @@
+taskKey="com.javarush.task.task25.task2509"
+
+Все не так легко, как кажется
+
+1. Почитать в инете про Socket, ThreadPoolExecutor, RunnableFuture, Callable.
+2. Реализуй логику метода cancel в классе SocketTask.
+3. Реализуй логику метода cancel для локального класса внутри метода newTask в классе SocketTask.
+
+
