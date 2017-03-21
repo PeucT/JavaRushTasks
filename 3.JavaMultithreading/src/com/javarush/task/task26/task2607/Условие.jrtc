@@ -1,0 +1,9 @@
+taskKey="com.javarush.task.task26.task2607"
+
+Вежливость - это искусственно созданное хорошее настроение
+
+В классе Solution создай public static класс IntegerHolder.
+IntegerHolder должен быть для типа int (имя переменной должно быть value), быть thread safe и изменяемым.
+В этом классе должны быть два public метода get и set.
+
+
