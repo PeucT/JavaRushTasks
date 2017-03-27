@@ -10,8 +10,8 @@ public class Solution {
     CountDownLatch latch = new CountDownLatch(1);
 
     public void someMethod() throws InterruptedException {
-        latch.await();
         retrieveValue();
+        latch.await();
     }
 
     void retrieveValue() {
