@@ -16,6 +16,32 @@ public class Solution {
     }
 
     public static int getRectangleCount(byte[][] a) {
-        return 0;
+        byte[][] temp;
+        temp = a.clone();
+        for (int i = 0; i < temp.length; i++){
+            for (int j = 0; j < temp.length - 1; j++){
+                if (temp[i][j] == 1 && temp[i][j+1] == 1) {
+                    temp[i][j] = 0;
+                }
+            }
+        }
+
+        for (int i = 0; i < temp.length - 1; i++){
+            for (int j = 0; j < temp.length; j++){
+                if (temp[i][j] == 1 && temp[i+1][j] == 1) {
+                    temp[i][j] = 0;
+                }
+            }
+        }
+
+        int summ = 0;
+        for (int i = 0; i < temp.length; i++){
+            for (int j = 0; j < temp.length; j++){
+                if (temp[i][j] == 1) {
+                    summ++;
+                }
+            }
+        }
+        return summ;
     }
 }
