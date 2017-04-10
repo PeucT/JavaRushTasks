@@ -2,8 +2,11 @@ package com.javarush.task.task32.task3209;
 
 import com.javarush.task.task32.task3209.listeners.FrameListener;
 import com.javarush.task.task32.task3209.listeners.TabbedPaneChangeListener;
+import com.javarush.task.task32.task3209.listeners.UndoListener;
 
 import javax.swing.*;
+import javax.swing.text.html.HTMLDocument;
+import javax.swing.undo.UndoManager;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +19,8 @@ public class View extends JFrame implements ActionListener {
     private JTabbedPane tabbedPane = new JTabbedPane();
     private JTextPane htmlTextPane = new JTextPane();
     private JEditorPane plainTextPane = new JEditorPane();
+    private UndoManager undoManager = new UndoManager();
+    private UndoListener undoListener = new UndoListener(undoManager);
 
     public View(){
         try {
@@ -39,7 +44,12 @@ public class View extends JFrame implements ActionListener {
     }
 
     public void selectedTabChanged(){
-
+        if (tabbedPane.getSelectedIndex() == 0) {
+            controller.setPlainText(plainTextPane.getText());
+        } else {
+            plainTextPane.setText(controller.getPlainText());
+        }
+        resetUndo();
     }
 
     public void initMenuBar(){
@@ -75,6 +85,14 @@ public class View extends JFrame implements ActionListener {
         pack();
     }
 
+    public UndoListener getUndoListener() {
+        return undoListener;
+    }
+
+    public void resetUndo(){
+        undoManager.discardAllEdits();
+    }
+
     public void exit(){
         controller.exit();
     }
@@ -88,15 +106,65 @@ public class View extends JFrame implements ActionListener {
     }
 
     public boolean canUndo(){
-        return false;
+        return undoManager.canUndo();
     }
 
     public boolean canRedo(){
-        return false;
+        return undoManager.canRedo();
     }
+
+    public void undo(){
+        try {
+            undoManager.undo();
+        } catch (Exception e){
+            ExceptionHandler.log(e);
+        }
+    }
+
+    public void redo(){
+        try{
+            undoManager.redo();
+        } catch (Exception e){
+            ExceptionHandler.log(e);
+        }
+    }
+
+    public boolean isHtmlTabSelected(){
+        if (tabbedPane.getSelectedIndex() == 0) { return true; }
+        else {return false;}
+    }
+
+    public void selectHtmlTab(){
+        tabbedPane.setSelectedIndex(0);
+        resetUndo();
+    }
+
+    public void update(){
+        HTMLDocument document = controller.getDocument();
+        selectHtmlTab();
+        htmlTextPane.setDocument(document);
+    }
+
+    public void showAbout(){
+        JOptionPane.showMessageDialog(this, "Сообщение", "Текст сообщения", JOptionPane.INFORMATION_MESSAGE);
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        String action = e.getActionCommand();
+        if ("Новый".equals(action)) {
+            controller.createNewDocument();
+        }else if ("Открыть".equals(action)){
+            controller.openDocument();
+        }else if ("Сохранить".equals(action)){
+            controller.saveDocument();
+        }else if ("Сохранить как...".equals(action)){
+            controller.saveDocumentAs();
+        }else if ("Выход".equals(action)){
+            controller.exit();
+        }else if ("О программе".equals(action)){
+            showAbout();
+        }
     }
 }
