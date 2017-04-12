@@ -1,7 +1,6 @@
 package com.javarush.task.task35.task3513;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by ArchMage on 11.04.17.
@@ -11,6 +10,9 @@ public class Model {
     private Tile[][] gameTiles;
     protected int score;
     protected int maxTile;
+    private Stack previousStates = new Stack();
+    private Stack previousScores = new Stack();
+    private boolean isSaveNeeded = true;
 
     public Model(){
         resetGameTiles();
@@ -22,6 +24,25 @@ public class Model {
             Tile tile = emptyList.get((int) (Math.random() * emptyList.size()));
             int tileWeight = Math.random() < 0.9 ? 2 : 4;
             tile.value = tileWeight;
+        }
+    }
+
+    private void saveState(Tile[][] tiles){
+        Tile[][] tempTile = new Tile[FIELD_WIDTH][FIELD_WIDTH];
+        for (int i = 0; i < FIELD_WIDTH; i++){
+            for (int j = 0; j < FIELD_WIDTH; j++) {
+                tempTile[i][j] = new Tile(tiles[i][j].value);
+            }
+        }
+        previousStates.push(tempTile);
+        previousScores.push(score);
+        isSaveNeeded = false;
+    }
+
+    public void rollback(){
+        if (!previousStates.isEmpty() && !previousScores.isEmpty()) {
+            gameTiles = (Tile[][]) previousStates.pop();
+            score = (int) previousScores.pop();
         }
     }
 
@@ -117,15 +138,18 @@ public class Model {
     }
 
     public void left(){
+        if (isSaveNeeded) { saveState(gameTiles); }
         boolean isChanged = false;
         for (int i = 0; i < FIELD_WIDTH; i++){
             if (compressTiles(gameTiles[i])) { isChanged = true; }
             if (mergeTiles(gameTiles[i])) { isChanged = true; }
         }
         if (isChanged) {addTile(); }
+        isSaveNeeded = true;
     }
 
     public void up(){
+        saveState(gameTiles);
         rotate(gameTiles);
         rotate(gameTiles);
         rotate(gameTiles);
@@ -134,6 +158,7 @@ public class Model {
     }
 
     public void right(){
+        saveState(gameTiles);
         rotate(gameTiles);
         rotate(gameTiles);
         left();
@@ -142,6 +167,7 @@ public class Model {
     }
 
     public void down(){
+        saveState(gameTiles);
         rotate(gameTiles);
         left();
         rotate(gameTiles);
@@ -238,5 +264,92 @@ public class Model {
             }
         }
         return false;
+    }
+
+    public void randomMove(){
+        int n = ((int) (Math.random() * 100)) % 4;
+        switch (n){
+            case 0:
+                left();
+                break;
+            case 1:
+                right();
+                break;
+            case 2:
+                up();
+                break;
+            case 3:
+                down();
+                break;
+        }
+    }
+
+    private boolean hasBoardChanged(){
+        Tile[][] prev = (Tile[][]) previousStates.peek();
+        int currTile = 0;
+        int prevTile = 0;
+        for (int i = 0; i < FIELD_WIDTH; i++) {
+            for (int j = 0; j < FIELD_WIDTH; j++) {
+                currTile += gameTiles[i][j].value;
+                prevTile += prev[i][j].value;
+            }
+        }
+
+        return currTile != prevTile;
+    }
+
+    public MoveEfficiency getMoveEfficiency(Move move){
+        MoveEfficiency movEff = null;
+        move.move();
+
+        if (!hasBoardChanged()) {
+            movEff = new MoveEfficiency(-1 ,0 ,move);
+        } else {
+            movEff = new MoveEfficiency(getEmptyTiles().size() ,score ,move);
+        }
+        rollback();
+        return movEff;
+    }
+
+    public void autoMove(){
+        PriorityQueue queue = new PriorityQueue(4, Collections.<MoveEfficiency>reverseOrder());
+        queue.add(getMoveEfficiency(this::randomMove));
+        queue.offer(getMoveEfficiency(this::right));
+        queue.offer(getMoveEfficiency(this::up));
+        queue.offer(getMoveEfficiency(this::down));
+        MoveEfficiency efficientMove = (MoveEfficiency) queue.poll();
+        efficientMove.getMove().move();
+    }
+
+    private class MoveLeft implements Move{
+
+        @Override
+        public void move() {
+            Model.this.left();
+        }
+    }
+
+    private class MoveUp implements Move{
+
+        @Override
+        public void move() {
+            Model.this.up();
+        }
+    }
+
+    private class MoveRight implements Move{
+
+        @Override
+        public void move() {
+            Model.this.right();
+        }
+    }
+
+    private class MoveDown implements Move{
+
+        @Override
+        public void move() {
+            Model.this.down();
+        }
     }
 }
