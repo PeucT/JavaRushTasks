@@ -20,23 +20,7 @@ public class Order {
 
     @Override
     public String toString() {
-        StringBuilder strB = new StringBuilder();
-        if (dishes == null || dishes.size() == 0) { return ""; }
-        else {
-            strB.append("Your order: [");
-            boolean isFirst = true;
-            for (int i = 0; i < dishes.size(); i++){
-                if (isFirst) {
-                    isFirst = false;
-                } else {
-                    strB.append(", ");
-                }
-                strB.append(dishes.get(i));
-
-            }
-            strB.append("] of ");
-            strB.append(tablet.toString());
-        }
-        return strB.toString();
+        if (dishes.isEmpty()) return "";
+        else return "Your order: " + dishes + " of " + tablet;
     }
 }
