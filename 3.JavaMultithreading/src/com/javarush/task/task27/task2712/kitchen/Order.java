@@ -23,4 +23,16 @@ public class Order {
         if (dishes.isEmpty()) return "";
         else return "Your order: " + dishes + " of " + tablet;
     }
+
+    public int getTotalCookingTime(){
+        int totalDureation = 0;
+        for (Dish entry : dishes){
+            totalDureation += entry.getDuration();
+        }
+        return totalDureation;
+    }
+
+    public boolean isEmpty(){
+        return (dishes == null || dishes.size() == 0);
+    }
 }

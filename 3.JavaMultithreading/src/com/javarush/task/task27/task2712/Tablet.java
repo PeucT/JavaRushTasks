@@ -1,5 +1,6 @@
 package com.javarush.task.task27.task2712;
 
+import com.javarush.task.task27.task2712.ad.AdvertisementManager;
 import com.javarush.task.task27.task2712.kitchen.Order;
 
 
@@ -25,9 +26,19 @@ public class Tablet extends Observable {
 
         try {
             Order order = new Order(this);
-            ConsoleHelper.writeMessage(order.toString());
-            setChanged();
-            notifyObservers(order);
+            if (!order.isEmpty()) {
+                ConsoleHelper.writeMessage(order.toString());
+                setChanged();
+                notifyObservers(order);
+
+                // Часть 8
+                // 5. Чтобы тестировать данную функциональность, нужно добавить вызов processVideos метода у AdvertisementManager.
+                // Очевидно, что этот метод должен вызываться во время создания заказа, а точнее — в параллельном режиме.
+                // Заказ готовится в то время, как видео смотрится.
+                // Добавьте вызов метода processVideos() в нужное место.
+
+                new AdvertisementManager(order.getTotalCookingTime() * 60).processVideos();
+            }
             return order;
         }
         catch (IOException e){

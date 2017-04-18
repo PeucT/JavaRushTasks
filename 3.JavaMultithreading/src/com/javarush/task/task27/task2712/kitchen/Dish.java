@@ -6,11 +6,21 @@ import java.util.Arrays;
  * Created by ArchMage on 14.04.17.
  */
 public enum Dish {
-    Fish,
-    Steak,
-    Soup,
-    Juice,
-    Water;
+    Fish(25),
+    Steak(30),
+    Soup(15),
+    Juice(5),
+    Water(3);
+
+    private int duration;
+
+    Dish(int i) {
+        duration = i;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
 
     public static String allDishesToString(){
         /*if (values().length == 0) {
