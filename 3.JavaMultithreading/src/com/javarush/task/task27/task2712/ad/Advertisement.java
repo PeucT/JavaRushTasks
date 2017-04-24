@@ -30,11 +30,20 @@ public class Advertisement {
         return name;
     }
 
+    public int getHits() {
+        return hits;
+    }
+
     public int getDuration() {
         return duration;
     }
 
     public long getAmountPerOneDisplaying() {
         return amountPerOneDisplaying;
+    }
+
+    public void revalidate(){
+        if (hits <= 0) { throw new UnsupportedOperationException(); }
+        hits--;
     }
 }

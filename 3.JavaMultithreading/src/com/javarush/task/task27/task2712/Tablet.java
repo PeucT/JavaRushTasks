@@ -1,6 +1,7 @@
 package com.javarush.task.task27.task2712;
 
 import com.javarush.task.task27.task2712.ad.AdvertisementManager;
+import com.javarush.task.task27.task2712.ad.NoVideoAvailableException;
 import com.javarush.task.task27.task2712.kitchen.Order;
 
 
@@ -37,10 +38,16 @@ public class Tablet extends Observable {
                 // Заказ готовится в то время, как видео смотрится.
                 // Добавьте вызов метода processVideos() в нужное место.
 
-                new AdvertisementManager(order.getTotalCookingTime() * 60).processVideos();
+                try {
+                    new AdvertisementManager(order.getTotalCookingTime() * 60).processVideos();
+                }
+                catch (NoVideoAvailableException e){
+                    logger.log(Level.INFO, "No video is available for the order " + order.toString());
+                }
             }
             return order;
         }
+
         catch (IOException e){
             logger.log(Level.SEVERE, "Console is unavailable.");
             return null;
