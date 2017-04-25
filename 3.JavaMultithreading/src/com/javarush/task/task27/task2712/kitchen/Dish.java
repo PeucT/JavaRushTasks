@@ -6,8 +6,8 @@ import java.util.Arrays;
  * Created by ArchMage on 14.04.17.
  */
 public enum Dish {
-    Fish(11),
-    //Fish(25),
+    //Fish(11),
+    Fish(25),
     Steak(30),
     Soup(15),
     Juice(5),

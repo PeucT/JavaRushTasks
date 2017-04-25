@@ -35,4 +35,9 @@ public class Order {
     public boolean isEmpty(){
         return (dishes == null || dishes.size() == 0);
     }
+
+    public List<Dish> getDishes() {
+        return dishes;
+    }
+
 }

@@ -4,6 +4,7 @@ import com.javarush.task.task27.task2712.kitchen.Cook;
 import com.javarush.task.task27.task2712.kitchen.Order;
 import com.javarush.task.task27.task2712.kitchen.Waiter;
 
+
 /**
  * Created by ArchMage on 14.04.17.
  */
@@ -15,6 +16,13 @@ public class Restaurant {
         Waiter waiter = new Waiter();
         cook.addObserver(waiter);
         Order order = tablet.createOrder();
+        DirectorTablet directorTablet = new DirectorTablet();
+
+
+        directorTablet.printAdvertisementProfit();
+        directorTablet.printCookWorkloading();
+        directorTablet.printArchivedVideoSet();
+        directorTablet.printActiveVideoSet();
 
     }
 }
