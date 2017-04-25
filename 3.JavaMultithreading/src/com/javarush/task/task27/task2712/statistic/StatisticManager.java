@@ -87,7 +87,7 @@ public class StatisticManager {
         private void generateStatistic(){
             List<EventDataRow> dataList = storage.get(EventType.SELECTED_VIDEOS);
 
-            VideoSelectedEventDataRow row = new VideoSelectedEventDataRow(new ArrayList<Advertisement>(), 2500, 50);
+            VideoSelectedEventDataRow row = new VideoSelectedEventDataRow(new ArrayList<Advertisement>(), 250, 50);
 
             Date date = null;
             Date date2 = null;
@@ -101,11 +101,11 @@ public class StatisticManager {
             row.setCurrentDate(date);
             dataList.add(row);
 
-            row = new VideoSelectedEventDataRow(new ArrayList<Advertisement>(), 1020, 50);
+            row = new VideoSelectedEventDataRow(new ArrayList<Advertisement>(), 102, 50);
             row.setCurrentDate(date2);
             dataList.add(row);
 
-            row = new VideoSelectedEventDataRow(new ArrayList<Advertisement>(), 543980, 50);
+            row = new VideoSelectedEventDataRow(new ArrayList<Advertisement>(), 54398, 50);
             row.setCurrentDate(date3);
             dataList.add(row);
         }

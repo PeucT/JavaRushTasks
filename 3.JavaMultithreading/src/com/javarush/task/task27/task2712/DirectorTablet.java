@@ -20,12 +20,12 @@ public class DirectorTablet {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
 
         for (Map.Entry<Date, Long> entry : amountPerDay.entrySet()){
-            Double amount = ((double) entry.getValue()) / 1000;
+            Double amount = ((double) entry.getValue()) / 100;
             Double roundedAmount = new BigDecimal(amount).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-            ConsoleHelper.writeMessage(dateFormat.format(entry.getKey()) + " - " + roundedAmount);
+            ConsoleHelper.writeMessage(dateFormat.format(entry.getKey()) + " - " + String.format("%.2f", roundedAmount).replaceAll(",", "."));
             totalValue += roundedAmount;
         }
-        ConsoleHelper.writeMessage("Total - " + totalValue);
+        ConsoleHelper.writeMessage("Total - " + String.format("%.2f", totalValue).replaceAll(",", "."));
     }
     public void printCookWorkloading(){
 
