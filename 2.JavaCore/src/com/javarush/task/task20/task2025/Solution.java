@@ -10,7 +10,7 @@ public class Solution {
     private static int[][] matrix;
 
     private static void fillMatrix() {
-        int n = 11;
+        int n = 10;
         matrix = new int[n][n];
         for (int i = 1; i < n; i++) {
             for (int j = 1; j < n; j++){
@@ -23,13 +23,14 @@ public class Solution {
         }
     }
 
-    public static long[] getNumbers(long N) {
-        long[] result = null;
+    public static int[] getNumbers(long N) {
+        int[] result = null;
+        //long[] result = null;
 
         fillMatrix();
         TreeSet<Long> list = new TreeSet<Long>();
 
-        for (long i = 1; i <= N; i++) {
+        for (long i = 1; i < N; i++) {
             int power = 0;
             long tempNumber = i;
             boolean isNotChecked = false;
@@ -67,15 +68,16 @@ public class Solution {
         }
 
         if (!list.isEmpty()) {
-            result = new long[list.size()];
+            result = new int[list.size()];
+            //result = new long[list.size()];
             int count = 0;
             for (long entry: list) {
-                result[count] = entry;
+                result[count] = (int) entry;
                 count++;
             }
             return result;
             //return list.toArray(new Long[list.size() - 1]);
-        } else return new long[1];
+        } else return new int[1];
 
     }
 
@@ -105,6 +107,7 @@ public class Solution {
     public static void main(String[] args) {
         //long N = Long.MAX_VALUE;
         long baseN =    1000000;
+        //long N =        372;
         long N =        100000000;
         //long N =        146511208;
 
@@ -112,13 +115,13 @@ public class Solution {
         long startTime = new Date().getTime();
         //Long[] result = getNumbersBaseAlg(baseN);
         //Long[] result = getNumbers(N);
-        long[] result = getNumbers(N);
+        int[] result = getNumbers(N);
         long endTime = new Date().getTime();
         long memoryVolumeEnd = Runtime.getRuntime().freeMemory();
         for (int i = 0; i < result.length ; i++) {
             System.out.println(result[i]);
         }
-        System.out.println("Memory consumption: " + ( ( memoryVolumeStart - memoryVolumeEnd ) / 1024 / 1024) + " Mb");
+        System.out.println("Memory consumption: " + ( ( memoryVolumeStart - memoryVolumeEnd ) ) + " Mb");
         System.out.println("Time consumption: " + (( endTime - startTime ) / 1000) + " s");
     }
 }

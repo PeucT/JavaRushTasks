@@ -8,6 +8,6 @@ import java.util.LinkedHashMap;
 
 public class Solution {
     public static void main(String[] args) {
-        ReadWriteMap<Integer, String> linkedSafeMap = new ReadWriteMap<>(new LinkedHashMap<>());
+        ReadWriteMap<Integer, String> linkedSafeMap = new ReadWriteMap<Integer, String>(new LinkedHashMap<Integer, String>());
     }
 }

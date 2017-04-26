@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 Тот, кто любит труд, не нуждается в развлечениях
 */
 public class Solution {
-    private final URL javarushUrl;
+    /*private final URL javarushUrl;
     private final URL javarushUrl1Child;
     private final URL javarushVkGroupUrl;
     private final URL javarushVkGroupUrl1Child;
@@ -108,5 +108,5 @@ public class Solution {
         public URL getPage() {
             return url;
         }
-    }
+    }*/
 }

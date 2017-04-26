@@ -4,10 +4,7 @@ import com.javarush.task.task27.task2712.statistic.StatisticManager;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by ArchMage on 25.04.17.
@@ -28,7 +25,21 @@ public class DirectorTablet {
         ConsoleHelper.writeMessage("Total - " + String.format("%.2f", totalValue).replaceAll(",", "."));
     }
     public void printCookWorkloading(){
-
+        Map<Date, Map<String, Long>> cookStatistic = StatisticManager.getInstance().getCookStatistic();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+        boolean isFirstDisplay = true;
+        for (Map.Entry<Date, Map<String, Long>> entry : cookStatistic.entrySet()){
+            if (isFirstDisplay) {
+                ConsoleHelper.writeMessage(dateFormat.format(entry.getKey()));
+                isFirstDisplay = false;
+            } else {
+                ConsoleHelper.writeMessage("");
+                ConsoleHelper.writeMessage(dateFormat.format(entry.getKey()));
+            }
+            for (Map.Entry<String, Long> entryInList : entry.getValue().entrySet()){
+                ConsoleHelper.writeMessage(String.format("%s - %d min", entryInList.getKey(), (entryInList.getValue() / 60)));
+            }
+        }
     }
     public void printActiveVideoSet(){
 

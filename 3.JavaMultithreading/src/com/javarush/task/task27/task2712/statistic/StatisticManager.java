@@ -2,13 +2,13 @@ package com.javarush.task.task27.task2712.statistic;
 
 import com.javarush.task.task27.task2712.ad.Advertisement;
 import com.javarush.task.task27.task2712.kitchen.Cook;
+import com.javarush.task.task27.task2712.statistic.event.CookedOrderEventDataRow;
 import com.javarush.task.task27.task2712.statistic.event.EventDataRow;
 import com.javarush.task.task27.task2712.statistic.event.EventType;
 import com.javarush.task.task27.task2712.statistic.event.VideoSelectedEventDataRow;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -39,6 +39,8 @@ public class StatisticManager {
         return statisticStorage.amountPerDay();
     }
 
+    public Map<Date, Map<String, Long>> getCookStatistic() { return statisticStorage.cookStatistic(); }
+
     private class StatisticStorage{
         private Map<EventType, List<EventDataRow>> storage = new HashMap<EventType, List<EventDataRow>>();;
 
@@ -54,6 +56,8 @@ public class StatisticManager {
             List<EventDataRow> list = storage.get(eventType);
             list.add(data);
         }
+
+
 
         private Map<Date, Long> amountPerDay(){
             //generateStatistic();
@@ -84,6 +88,40 @@ public class StatisticManager {
             return amountPerDay;
         }
 
+        private Map<Date, Map<String, Long>> cookStatistic(){
+            Map<Date, Map<String, Long>> cookStatistic = new TreeMap<Date, Map<String, Long>>(Collections.reverseOrder());
+            List<EventDataRow> cookStatisticsAll = storage.get(EventType.COOKED_ORDER);
+            for (EventDataRow entry: cookStatisticsAll){
+                CookedOrderEventDataRow order = (CookedOrderEventDataRow) entry;
+                Date advDate = order.getDate();
+
+                Date referenceDate = null;
+                try {
+                    referenceDate = new SimpleDateFormat( "dd.MM.yyyy" ).parse("" + advDate.getDate() + "."
+                            + (advDate.getMonth() + 1) + "."
+                            + (advDate.getYear() + 1900) );
+
+                } catch (ParseException e) {
+                }
+                Map<String, Long> currentCookStat = cookStatistic.get(referenceDate);
+
+                if (currentCookStat == null) {
+                    Map<String, Long> map = new TreeMap<String, Long>();
+                    map.put(order.getCookName(), Long.valueOf(order.getTime()));
+                    cookStatistic.put(referenceDate, map);
+                } else {
+                    Long cookerTime = currentCookStat.get(order.getCookName());
+                    if (cookerTime == null) {
+                        currentCookStat.put(order.getCookName(), Long.valueOf(order.getTime()));
+                    }else {
+                        cookerTime += Long.valueOf(order.getTime());
+                        currentCookStat.put(order.getCookName(), cookerTime);
+                    }
+                }
+            }
+            return cookStatistic;
+        }
+
         private void generateStatistic(){
             List<EventDataRow> dataList = storage.get(EventType.SELECTED_VIDEOS);
 
@@ -105,9 +143,14 @@ public class StatisticManager {
             row.setCurrentDate(date2);
             dataList.add(row);
 
+            row = new VideoSelectedEventDataRow(new ArrayList<Advertisement>(), 250, 50);
+            row.setCurrentDate(date2);
+            dataList.add(row);
+
             row = new VideoSelectedEventDataRow(new ArrayList<Advertisement>(), 54398, 50);
             row.setCurrentDate(date3);
             dataList.add(row);
         }
+
     }
 }
