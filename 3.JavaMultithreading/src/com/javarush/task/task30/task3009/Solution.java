@@ -1,5 +1,6 @@
 package com.javarush.task.task30.task3009;
 
+import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,6 +18,18 @@ public class Solution {
 
     private static Set<Integer> getRadix(String number){
         Set<Integer> result = new HashSet<>();
+        try {
+            BigInteger bigInt = new BigInteger(number);
+            for (int i = 2; i <= 36; i++) {
+
+                String input = bigInt.toString(i);
+                StringBuilder inputInBuilder = new StringBuilder(input);
+                StringBuilder compareString = new StringBuilder(input).reverse();
+                if (inputInBuilder.toString().equals(compareString.toString())) { result.add(i); }
+
+            }
+        } catch (NumberFormatException e) {
+        }
 
         return result;
     }
