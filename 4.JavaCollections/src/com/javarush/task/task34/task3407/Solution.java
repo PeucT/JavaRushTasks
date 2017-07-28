@@ -48,7 +48,6 @@ public class Solution {
             Thread.sleep(1000);
         }
 
-
         public ReferenceQueue<Monkey> getQueue() {
             return queue;
         }
@@ -76,7 +75,12 @@ public class Solution {
         }
 
         public List<PhantomReference<Monkey>> getFilledList() {
-            return null;
+            ReferenceQueue<Monkey> queue = getQueue();
+            List<PhantomReference<Monkey>> list = new ArrayList<>();
+            for (int i = 0; i < 200; i++){
+                list.add(new PhantomReference<Monkey>(new Monkey(), queue));
+            }
+            return list;
         }
 
         public void finish() throws InterruptedException {
